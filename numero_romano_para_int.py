@@ -1,3 +1,4 @@
+# não finalizado
 def romano_para_int(romano_nb):
     romano_nb = str(romano_nb)
     romano_nb = romano_nb.upper
