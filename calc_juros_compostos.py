@@ -1,4 +1,4 @@
-# input dos valores e aviso:
+# input dos valores e aviso
 print('essa calculadora não considera aportes mensais')
 valor = input("valor da aplicação em reais: ")
 taxa_de_juros_mensal = input(
