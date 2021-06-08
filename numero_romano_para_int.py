@@ -1,21 +1,23 @@
-# não finalizado
+# vi no youtube um desafio para fazer essa função
+# um dia eu faço kkk
 def romano_para_int(romano_nb):
-    romano_nb = str(romano_nb)
+
     romano_nb = romano_nb.upper
     romano_nb = romano_nb.replace('I', '1').replace('V', '5')  .replace('X', '10').replace(
         'L', '50').replace('C', '100').replace('D', '500').replace('M', '1000')
     letras = len(romano_nb)
-    type(romano_nb)
 
-    numero_1 = romano_nb[0]
-    # pegar os numeros do 0 ao (letras), (letras) vezes executar as condições
-    # Algarismos de menor ou igual valor à direita são somados ao algarismo de maior valor;
-    # Algarismos de menor valor à esquerda são subtraídos do algarismo de maior valor.
 
-    romano_para_int('XXV')
-    return 25
+# talvez eu consiga resolver usando 'for'
+    for romano in romano_nb:
+        fazer alguma coisa
+# pegar os numeros do 0 ao (letras), (letras) vezes executar as condições
+# Algarismos de menor ou igual valor à direita são somados ao algarismo de maior valor;
+# Algarismos de menor valor à esquerda são subtraídos do algarismo de maior valor.
 
-    # Área de testes: só mexa aqui se souber o que está fazendo!
+
+
+# Área de testes: só mexa aqui se souber o que está fazendo!
 acertos = 0
 total = 0
 
