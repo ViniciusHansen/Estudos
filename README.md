@@ -1,7 +1,2 @@
-# English
-
-This repository is a showcase to my projects, each file is a project, if the file is incomplete it means that i didn't finished it yet
-
-# Portuguese
-
-Este é um repositório destinado para pequenos projetos, cada arquivo é um projeto, se o arquivo estiver incompleto é por que ainda não tive tempo de terminar
+- Este é um repositório destinado para pequenos programas que eu faço e também listas de exercício sobre programação.
+- As listas de exercícios sobre programação estão em um repositório privado, após a data de entrega acabar, eu publico elas neste repositório para evitar que meus colegas copiem minhas respostas.
