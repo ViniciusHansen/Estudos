@@ -1,2 +1,2 @@
-- Este é um repositório destinado para pequenos programas que eu faço e também listas de exercício sobre programação.
-- As listas de exercícios sobre programação estão em um repositório privado, após a data de entrega acabar, eu publico elas neste repositório para evitar que meus colegas copiem minhas respostas.
+### Este é um repositório destinado para pequenos programas, experimentos com novas linguagens e listas de exercícios.
+
