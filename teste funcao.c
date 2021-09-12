@@ -19,36 +19,30 @@ int fatorial(int numero)
     return fator;
 }
 
-int fibonacci(n)
+void fibonacci(n)
 {
-    int x, y, z, count;
+    int x, y, z;
     x = 0;
     y = 1;
-    z = x + y;
-    count = 1;
-    do
+
+    for (int count = 0; count < n; count++)
     {
-        printf("%i \n", x);
         z = x + y;
+        printf("%i \n", x);
         x = y;
         y = z;
-        ++count;
-        // printf("\n");
-    } while (count < n + 1);
+    }
 }
 
 int main()
 {
-    printf("\nFATORIAL \n");
+    printf("\n FATORIAL \n");
     printf("%d \n", fatorial(4));
     printf("%d \n", fatorial(6));
     printf("%d \n", fatorial(8));
     printf("%d \n", fatorial(10));
 
-    printf("\nFIBONACCI n = 1\n");
-    printf("%d \n", fibonacci(1));
-    printf("\nFIBONACCI n = 3\n");
-    printf("%d \n", fibonacci(3));
-    printf("\nFIBONACCI n = 5\n");
-    printf("%d \n", fibonacci(5));
+    printf("\n FIBONACCI \n");
+    int n = 21;
+    fibonacci(n);
 }
