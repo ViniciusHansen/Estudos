@@ -21,14 +21,14 @@ Então 5 é o indice procurado.
 
 def particao(lista):
     for index, element in enumerate(lista):
-        # checar a soma dos elementos a esquerda
+        # soma dos elementos a esquerda
         count = index
         sum_left = 0
         while count > 0:
             sum_left += lista[count - 1]
             count -= 1
 
-        # checar a soma dos elementos a direta
+        # soma dos elementos a direta
         count = index
         sum_right = 0
         while count < len(lista) - 1:
@@ -36,15 +36,13 @@ def particao(lista):
             count += 1
 
         if sum_left == sum_right:
-            global resultado
-            resultado = index
             break
 
-    return(resultado)
+    return(index)
 
 
 input = [22, 5, 18, 7, 1, 10, 2, 7, 3, 6, 4, 20]
-# input = [15, 5, 7, 8, 10, 2, 9, 1, 4, 4, 2, 7, 13, 2, 3]
+input2 = [15, 5, 7, 8, 10, 2, 9, 1, 4, 4, 2, 7, 13, 2, 3]
 
 
 def main():
