@@ -34,7 +34,7 @@ void fibonacci(n)
     }
 }
 
-int main()
+void main(void)
 {
     printf("\n FATORIAL \n");
     printf("%d \n", fatorial(4));
