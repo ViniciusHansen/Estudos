@@ -23,9 +23,11 @@ inversoLista (x:xs) = inversoLista xs ++ [x]
 nUltimos :: Int -> [a] -> [a]
 nUltimos n [] = []
 nUltimos n (x:xs) | n == length (x:xs) = x : xs
+                  | n > length (x:xs) = (x:xs)
                   | otherwise = nUltimos n xs
 
 enesimo :: Int -> [Int] -> Int
+enesimo 0 _ = -1
 enesimo _ [] = -1
 enesimo n (x:xs) | n > ((length xs) + 1) = -1
                  | otherwise = (x:xs)!!(n-1)
@@ -57,7 +59,9 @@ ordenarLista [] = []
 ordenarLista (x:xs) = menor (x:xs) : ordenarLista (removerElem (menor(x:xs)) (x:xs))
 
 insereElem :: Int -> [Int] -> [Int]
+insereElem _ [] = []
 insereElem n (x:xs) | pertence n (x:xs) == True = (x:xs)
+                    | n > last (x:xs) = (x:xs) ++ [n]
                     | n > x = x:insereElem n xs
                     | n < x = n:x:xs
 
@@ -97,14 +101,21 @@ inverteDNA (x:xs) | x == 'A' = inverteDNA xs ++ ['T']
                   | x == 'C' = inverteDNA xs ++ ['G']
                   | x == 'G' = inverteDNA xs ++ ['C']
 
---trocoCafe :: Int -> Int -> [(a,b)]
---trocoCafe total pago | troco >= 50 = (50, 1 ): trocoCafe (total - 25) (pago - 25)
---                     | troco < 50 && troco >= 20 = (20, 1): trocoCafe (total - 10) (pago - 10)
---                     | troco < 20 && troco >= 10 = (10, 1): trocoCafe (total -5) (pago - 5)
---                     | troco < 10 && troco >= 5 = (5, 1): trocoCafe (total - 2) (pago - 2)
---                     | otherwise = []
---    where troco = pago - total
+trocoCafe :: Int -> Int -> [(Int, Int)]
+trocoCafe v p = troco (p - v) [50,20,10,5]
 
-magica [] =[]
-magica (x:xs) = (replicate (length (x:xs)) x ):magica xs
+troco :: Int -> [Int] -> [(Int, Int)]
+troco _ [] = []
+troco v (x:xs) | div v x > 0 = (x, div v x):troco (rem v x) xs
+               | otherwise = troco v xs
+
+
+magica :: [Char] -> [Char]
+magica (x:xs) = concat (magica1 (x:xs) ++ tail (magica2 (x:xs)))
+magica1 [] =[]
+magica1 (x:xs) = (replicate (length (x:xs)) x ):magica1 xs
+magica2 [] =[]
+magica2 (x:xs) = inversoLista (magica1 (x:xs))
+
+
 
