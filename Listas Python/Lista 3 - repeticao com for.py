@@ -1,11 +1,3 @@
-# Lista de exercícios - Estruturas de repetição for
-
-# ATENÇÃO !!!
-# Todos os exercícios devem ser resolvidos com "for".
-# Utilizar "for item in lista" sempre que possível.
-# Utilizar "for i, item in enumerate(item) sempre que possível.
-
-
 def soma_das_temperaturas(lista):
     
     soma_notas = 0
