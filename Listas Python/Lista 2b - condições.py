@@ -1,6 +1,3 @@
-# Lista de exercícios - Condições (Adicional)
-
-
 def media_ponderada(prova, trabalho, exercicio):
     """Calcule a média ponderada, sabendo que os pesos são os seguintes:
     - prova: peso 7
