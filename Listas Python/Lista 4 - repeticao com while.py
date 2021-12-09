@@ -7,15 +7,7 @@
 
 
 def quantidade_de_impares(valor_inicial, valor_final):
-    """Determine a quantidade de números ímpares num intervalo.
 
-    Argumentos:
-        valor_inicial (int): o limite inferior do intervalo;
-        valor_final (int): o limite superior do intervalo;
-
-    Retorna:
-        int: a quantidade de números ímpares no intervalo.
-    """
     impares = 0
     while valor_inicial + 1 < valor_final:
         valor_inicial += 1
@@ -32,13 +24,6 @@ def soma_dos_inteiros(valor1, valor2):
     Considere que os limites do intervalo podem ser informados
     como números negativos ou fora de ordem.
     Ex: 1 e 5 ou 5 e 1, retorna 9
-
-    Argumentos:
-        valor1 (int): um dos limite do intervalo, excluindo-o;
-        valor2 (int): o outro limite do intervalo, excluindo-o;
-
-    Retorna:
-        float: a soma dos valores dentro do intervalo dado.
     """
     soma = 0
     while valor1 < valor2 - 1:
@@ -51,16 +36,7 @@ def soma_dos_inteiros(valor1, valor2):
 
 
 def potencia(base, expoente):
-    """Calcule a base elevada ao expoente manualmente sem usar
-    'base ** expoente'.
 
-    Argumentos:
-        base (int): o valor base;
-        expoente (int): o expoente;
-
-    Retorna:
-        int: o resultado de base elevado ao expoente.
-    """
     potencia = 1
     while expoente > 0:
         potencia = potencia * base
@@ -71,15 +47,6 @@ def potencia(base, expoente):
 def crescimento_populacional(populacao1, populacao2, crescimento1, crescimento2):
     """Calcule quantos anos levará para a 'população1'
     ultrapassar a 'população2', baseado em suas porcentagens de crescimento.
-
-    Argumentos:
-        populacao1 (int): a população da 1a cidade;
-        populacao2 (int): a população da 2a cidade;
-        crescimento1 (float): o percentual de crescimento anual da população da 1a cidade;
-        crescimento2 (float): o percentual de crescimento anual da população da 2a cidade;
-
-    Retorna:
-        int: a quantidade de anos que levará para a população da cidade 1 utrapassar a população da cidade 2.
     """
     anos = 0
     if populacao1 < populacao2 and crescimento1 < crescimento2:
@@ -94,13 +61,6 @@ def crescimento_populacional(populacao1, populacao2, crescimento1, crescimento2)
 def Fibonacci(n):
     """Retorne uma lista com os n primeiros valores da série de Fibonacci.
     Fibonacci = 1,1,2,3,5,8,13,...
-
-    Argumento:
-        n (int): a quantidade de elementos que serão gerados.
-
-    Retorna:
-        uma lista de elementos inteiros correspondendo aos n primeiros elementos da série
-        de Fibonacci.
     """
     elemento_1 = 0
     elemento_2 = 1
@@ -119,12 +79,6 @@ def fatorial(numero):
     """Calcule e retorne o fatorial do 'numero' informado,
     O fatorial é o valor produtório dos valores menores ou iguais ao número
     ex: fatorial de 4 é 4*3*2*1 e retorna 24.
-
-    Argumento:
-        numero (int): o número do qual se quer calcular o fatorial.
-
-    Retorna:
-        int: o fatorial de numero.
     """
     if numero < 1:
         return 1
@@ -138,12 +92,6 @@ def fatorial(numero):
 def é_primo(valor):
     """Verifique se o valor informado é primo.
     Um número primo é aquele que é divisível apenas por ele mesmo e por 1.
-
-    Argumento:
-        valor (int): um número inteiro.
-
-    Retorna:
-        bool: True ou False, se o valor e ou não primo.
     """
     if valor == 0 or valor == 1:
         return False
@@ -159,13 +107,6 @@ def é_primo(valor):
 def quantidade_de_primos(inicio, fim):
     """Retorne a quantidade de primos entre os valores informados, incluindo
     os limites.
-
-    Argumentos:
-        inicio (int): limite inferior;
-        fim (int): limite superior;
-
-    Retorna:
-        int: a quantidade de números primos dentro do intervalo especificado.
     """
     contador_primo = 0
     while inicio < fim + 1:
@@ -178,13 +119,6 @@ def quantidade_de_primos(inicio, fim):
 def lista_de_primos(inicio, fim):
     """Retorne uma lista de primos entre os valores informados, incluindo
     os limites.
-
-    Argumentos:
-        inicio (int): limite inferior;
-        fim (int): limite superior;
-
-    Retorna:
-        lista de inteiros, os primos dentro do intervalo especificado.
     """
     primos = []
     while inicio < fim + 1:
@@ -197,13 +131,6 @@ def lista_de_primos(inicio, fim):
 def serie1(n):
     """Dado n, calcule o valor de
     s = 1 + 1/2 + 1/3 + 1/4 + ... + 1/n
-
-    Argumento:
-        n (int): o valor final da série;
-
-    Retorna:
-        float: a soma dos valores da série, segundo a fórmula e o valor de n informados.
-
     """
     soma = 0
     contador = 1
@@ -216,12 +143,6 @@ def serie1(n):
 def serie2(n):
     """Dado n, calcule o valor de
     s = 1/1 + 2/3 + 3/5 + 4/7 + 5/9 + ... + n/m
-
-    Argumento:
-        n (int): o valor final da série;
-
-    Retorna:
-        float: a soma dos valores da série, segundo a fórmula e o valor de n informados.
     """
     N = 1
     M = 1
@@ -239,12 +160,6 @@ def serie_pi(n):
     """Calcule o valor de pi através da série
     4/1 - 4/3 + 4/5 - 4/7 + ... - 4/m, sendo informado
     o número n de iterações.
-
-    Argumento:
-        n (int): o valor final da série;
-
-    Retorna:
-        float: o valor de pi calculado.
     """
     pi = 0
     contador = 0
@@ -256,4 +171,3 @@ def serie_pi(n):
         m += 2
         sinal *= -1
     return round(pi, 6)
-
