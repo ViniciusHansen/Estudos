@@ -6,14 +6,6 @@ def media_ponderada(prova, trabalho, exercicio):
     - prova: peso 7
     - trabalho: peso 2
     - exercício : peso 1
-
-    Argumentos:
-        prova (float): nota de uma prova, entre 0 e 10.
-        trabalho (float): nota do trabalho, entre 0 e 10.
-        exercicio (float): nota do exercício, entre 0 e 10.
-
-    Retorna:
-        float: média ponderada das notas, com 1 casa decimal
     """
     if prova and trabalho and exercicio <= 0:
         return 0
@@ -28,13 +20,6 @@ def aluguel_airbnb(valor_diaria, dias):
     diária, e retorna o valor a ser pago, considerando um acréscimo de
     R$ 75,00 para limpeza e 5% de taxa de administração sobre o valor
     do aluguel, sem a taxa de limpeza
-
-    Argumentos:
-        valor_diaria (float): o valor da diária
-        dias (int): a quantidade de dias de hospedagem
-
-    Retorna:
-        float: o valor do aluguel, com duas casas decimais
     """
     if dias < 0:
         return []
@@ -45,14 +30,6 @@ def aluguel_airbnb(valor_diaria, dias):
 def converte_hora(horario):
     """
     Recebe um horário no formato 24 horas e retorna no formato am/pm
-    - am: antes do meio-dia
-    - pm: depois do meio-dia
-
-    Argumento:
-        horario (string): um horário no formato 24 horas
-
-    Retorna:
-        string: horario no formato am/pm ex:12:59
     """
     hora, minutos = horario.split(':')
     hora = int(hora)
@@ -75,16 +52,6 @@ def situacao_aluno(nota1, nota2, nota3, faltas, aulas_ministradas):
     Se o aluno tiver mais de 25% de faltas, está automaticamente reprovado por faltas (RF).
     Se ele tiver média abaixo de 7.0, está em Exame Final (EF)
     Se tiver média acima de 7.0 e frequencia igual ou superior a 75% está aprovado (AP).
-
-    Argumentos:
-        nota1 (float): 1a nota
-        nota2 (float): 2a nota
-        nota3 (float): 3a nota
-        faltas (int): número de faltas
-        aulas_ministradas (int): quantidade de aulas ministradas
-
-    Retorna:
-        string: a situação do aluno
     """
     porcentagem_faltas = (100 * faltas) / aulas_ministradas
     frequencia = 100 - porcentagem_faltas
@@ -105,13 +72,6 @@ def aumento_preco(preco):
     - até 700 (inclusive): aumento de 15%
     - até 1500 (inclusive): aumento de 10%
     - acima de 1500: aumento de 5%
-
-    Argumentos:
-        preco (float): o preço atual do produto
-
-    Retorna:
-        tupla de floats: preco atual, percentual de aumento, valor do aumento e
-                            novo preço, todos com duas casas decimais.
     """
     if preco > 1500:
         percentual_aumento = 5
@@ -138,13 +98,6 @@ def idade_canina(idade_humana, porte_do_cao):
     - cães de porte pequeno: fator 5;
     - cães de porte médio: fator 6;
     - cães grandes: fator 7.
-
-    Argumentos:
-        idade_humana (int): a idade do ser humano
-        porte_do_cao (string): um texto informando o porte do cão (veja os testes para detalhes)
-
-    Retorna:
-        int: a idade canina do ser humano
     """
     import math
     if porte_do_cao == 'pequeno':
@@ -164,12 +117,6 @@ def aumento_salario(salario):
     - acima de 5 SM: aumento de 5%
 
     Salário mínimo para referência: R$ 724,00
-
-    Argumentos:
-        salario (float): o salario atual
-
-    Retorna:
-        float: novo salário, com duas casas decimais.
     """
     salario_min = 724
     if salario > 5 * salario_min:
@@ -191,12 +138,6 @@ def nota_para_conceito(nota):
     Entre 7.9 e 7.0             C
     Entre 6.9 e 6.0             D
     Entre 5.9 e zero            E
-
-    Argumento:
-        nota(float): a nota, com 1 casa decimal
-
-    Retorna:
-        string: o conceito correspondente
     """
     if nota <= 10 and nota >= 9:
         return 'A'
@@ -219,14 +160,6 @@ def imc(peso, altura):
     imc <= 25.0: "Normal"
     imc <= 30.0: "Sobrepeso"
     imc > 30: "Obeso"
-
-
-    Argumentos:
-        peso (float): peso em Kg
-        altura (float): altura em metros
-
-    Retorna:
-        string: índice de massa corporal
     """
     imc = peso / altura ** 2
     if imc <= 18.5:
@@ -249,15 +182,6 @@ def conta_combustivel(qtde_litros, tipo_combustivel, tipo_pagamento):
         b. Se o pagamento for feito à vista ou débito, o cliente recebe um desconto de 3% (10% na verdade) sobre o valor total
         c. Escreva um função que leia o número de litros vendidos, o tipo de combustível (gasolina, álcool, diesel),
             e o tipo de pagamento (à vista, débito, crédito), calcule e devolva o valor total da compra.
-
-
-    Argumentos:
-        qtde_litros (float): quantidade de litros vendida
-        tipo_combustivel (string): uma letra indicando o tipo de combustível
-        tipo_pagamento (string): uma letra, indicando o tipo de pagamento
-
-    Retorna:
-        float: o valor a ser pago, com duas casas decimais
     """
     preco_alcool = 3.159
     preco_gasolina = 3.739
@@ -295,13 +219,6 @@ def comprar_frutas(morango=0, uva=0):
     Escreva um algoritmo para ler a quantidade (em Kg) de morangos e a
     quantidade (em Kg) de uvas adquiridas e escreva o valor a ser
     pago pelo cliente.
-
-    Argumentos:
-        morango (float): a quantidade de morangos, em Kg
-        uva (float): a quantidade de uvas, em Kg
-
-    Retorna:
-        float: o preço a pagar, com 2 casas decimais
     """
     total_kg = morango + uva
     if morango >= 0:
