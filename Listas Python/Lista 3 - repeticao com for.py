@@ -7,14 +7,7 @@
 
 
 def soma_das_temperaturas(lista):
-    """Retorna a soma dos elementos de uma lista.
-
-    Argumentos:
-        lista (lista de floats): Uma lista de valores float.
-
-    Retorna:
-        float: a soma dos elementos da lista.
-    """
+    
     soma_notas = 0
     for valor_cedula in lista:
         soma_notas += valor_cedula
@@ -22,15 +15,7 @@ def soma_das_temperaturas(lista):
 
 
 def quantidade_de_impares(valor_inicial, valor_final):
-    """Determine a quantidade de números ímpares num intervalo, excluindo os valores limite do intervalo.
 
-    Argumentos:
-        valor_inicial (int): o limite inferior do intervalo, excluindo-o;
-        valor_final (int): o limite superior do intervalo, excluindo-o;
-
-    Retorna:
-        int: a quantidade de números dentro do intervalo dado.
-    """
     impar = []
     for number in range(valor_inicial, valor_final):
         if number % 2 != 0 and number != 1:
@@ -43,13 +28,6 @@ def soma_dos_inteiros(valor1, valor2):
     Considere que os limites do intervalo podem ser informados
     como números negativos ou fora de ordem.
     Ex: 1 e 5 ou 5 e 1, retorna 9
-
-    Argumentos:
-        valor1 (int): um dos limite do intervalo, excluindo-o;
-        valor2 (int): o outro limite do intervalo, excluindo-o;
-
-    Retorna:
-        float: a soma dos valores dentro do intervalo dado.
     """
     somar = []
     for numero in range(valor1, valor2):
@@ -64,12 +42,6 @@ def soma_dos_inteiros(valor1, valor2):
 def serie(n):
     """Dado n, calcule o valor de
     s = 1 + 1/2 + 1/3 + 1/4 + ... + 1/n
-
-    Argumento:
-        n (int): o valor final da série;
-
-    Retorna:
-        float: a soma dos valores da série, segundo a fórmula e o valor de n informados.
     """
     divisores = []
     s = []
@@ -81,14 +53,7 @@ def serie(n):
 
 
 def ordenamento_contrario(lista):
-    """Inverta a ordem dos elementos da lista.
 
-    Argumento:
-        lista (list): uma lista de elementos, independente de tipo.
-
-    Retorna:
-        list: uma lista com os elementos em ordem inversa.
-    """
     reversa = []
     for item in reversed(lista):
         reversa.append(item)
@@ -96,19 +61,7 @@ def ordenamento_contrario(lista):
 
 
 def intercalamento_listas(lista1, lista2):
-    """Usando 'lista1' e 'lista2', ambas do mesmo comprimento,
-        crie uma nova lista composta pelo intercalamento entre as duas.
-        Intercalar significa que a nova lista terá o 1o elemento da 1a lista,
-        seguido do 1o elemento da 2a lista, seguido do 2o elemento da 1o lista,
-        seguido do 2o elemento da 2a lista e assim por diante.
 
-    Argumentos:
-        lista1 (list): uma lista de elementos, independente de tipo;
-        lista2 (list): uma lista de elementos, independente de tipo;
-
-    Retorna:
-        list: uma lista com os elementos intercalados das duas listas recebidas.
-    """
     intercalado = []
     for item1, item2 in zip(lista1, lista2):
         intercalado.append(item1)
@@ -117,13 +70,8 @@ def intercalamento_listas(lista1, lista2):
 
 
 def im_pares(lista):
-    """Separe em listas os pares e impares, dos inteiros da lista recebida.
-
-    Argumento:
-        lista (lista de inteiros): uma lista de elementos int;
-
-    Retorna:
-        uma tupla com duas listas de inteiros sendo a primeira uma lista com os pares
+    """Separe em listas os pares e impares, dos inteiros da lista recebida 
+        e retorne uma tupla com duas listas de inteiros sendo a primeira uma lista com os pares
         e a segunda uma ista com os ímpares.
     """
     par = []
@@ -137,10 +85,7 @@ def im_pares(lista):
 
 
 def maior_menor(lista):
-    """Calcule o maior e o menor número da lista recebida.
-
-    Argumento:
-        lista (list): uma lista de elementos float;
+    """Calcule o maior e o menor número da lista recebida
 
     Retorna:
         uma tupla com dois números inteiros, o maior e o menor da lista.
@@ -159,15 +104,6 @@ def maior_menor(lista):
 def dar_troco(valor_a_pagar, valor_em_dinheiro):
     """Calcule o troco a devolver ao cliente com notas de 1,2,5,10,20,50.
         A resposta deve conter a quantidade de cada valor_cedula, sem considerar centavos.
-
-    Argumentos:
-        valor_a_pagar (float): o valor da conta
-        valor_em_dinheiro (float): o valor que foi dado para pagar a conta.
-
-    Retorna:
-        uma lista de uma tuplas, onde cada dupla contém dois valores:
-        o valor da valor_cedula e a quantidade daquela valor_cedula.
-        Se a quantidade de notas for igual a zero, não deve aparecer na lista.
     """
     final = []
     cedulas = [50, 20, 10, 5, 2, 1]
@@ -189,13 +125,6 @@ def media_anual(temperaturas):
     """Receba uma lista com as temperaturas médias de cada mês
     e devolva uma lista com os números correspondentes aos meses
     que possuem temperatura superior á média anual.
-
-    Argumentos:
-        temperaturas (lista de floats): as temperaturas médias de cada mês no ano, em ordem.
-
-    Retorna:
-        lista de inteiros: uma lista com o número correspondente ao mês em que a
-        temperatura média foi maior que a temperatura média anual.
     """
     media_temp = sum(temperaturas) / len(temperaturas)
     meses_acima = []
@@ -210,13 +139,6 @@ def maiores_13(idades, alturas):
         listas separadas e de igual comprimento.
         Calcule a media das alturas e retorne as alturas daqueles que
         possuem 'idades' maior que 13 e altura inferior a media da turma.
-
-    Argumentos:
-        idades (lista de inteiros): Uma lista de idades;
-        alturas (lista de floats): uma lista de alturas;
-
-    Retorna:
-        uma lista de alturas dos alunos, conforme o criério definido.
     """
     media_turma = sum(alturas) / len(alturas)
     alturas_final = []
@@ -231,12 +153,6 @@ def maiores_13(idades, alturas):
 def testa_primo(valor):
     """Verifique se o valor informado é primo.
     Um número primo é aquele que é divisível apenas por ele mesmo e por 1.
-
-    Argumento:
-        valor (int): um número inteiro.
-
-    Retorna:
-        bool: True ou False, se o valor e ou não primo.
     """
     multiplos = 0
     if valor == 0 or valor == 1:
@@ -250,13 +166,6 @@ def testa_primo(valor):
 def lista_de_primos(inicio, fim):
     """Retorne uma lista de primos entre os valores informados, incluindo
     os limites.
-
-    Argumentos:
-        inicio (int): limite inferior;
-        fim (int): limite superior;
-
-    Retorna:
-        lista de inteiros, os primos dentro do intervalo especificado.
     """
     lista_primos = []
     for numero in range(inicio, fim):
@@ -268,13 +177,6 @@ def lista_de_primos(inicio, fim):
 def Fibonacci(n):
     """Retorne uma lista com os n primeiros valores da série de Fibonacci.
     Fibonacci = 1,1,2,3,5,8,13,...
-
-    Argumento:
-        n (int): a quantidade de elementos que serão gerados.
-
-    Retorna:
-        uma lista de elementos inteiros correspondendo aos n primeiros elementos da série
-        de Fibonacci.
     """
     elemento_1 = 0
     elemento_2 = 1
@@ -294,12 +196,6 @@ def altera_salarios(salarios):
     - de 2 até 5 SM(inclusive): aumento de 10%
     - acima de 5 SM: aumento de 5%
     Salário mínimo para referência: R$ 724,00
-
-    Argumento:
-        salarios (lista de floats): os salários originais.
-
-    Retorna:
-        uma lista de elementos float, correspondendo aos salários corrigidos.
     """
     new_salary = []
     salario_min = 724
@@ -317,6 +213,3 @@ def altera_salarios(salarios):
             new_wage = round(salario * 1.20, 2)
             new_salary.append(new_wage)
     return new_salary
-
-
-
