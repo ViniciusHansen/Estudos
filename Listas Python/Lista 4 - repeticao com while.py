@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# Lista de exercícios - Estruturas de repetição while
-
-# ATENÇÃO !!!
-# Todos os exercícios devem ser resolvidos com "while".
-# Não utilize "for", métodos das estruturas de dados ou funções embutidas.
-
-
 def quantidade_de_impares(valor_inicial, valor_final):
 
     impares = 0
