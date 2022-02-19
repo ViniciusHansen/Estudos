@@ -7,10 +7,6 @@ int main(void){
 
     scanf("%[^\n]", s);
 
-    //for (int i = 0; i < S; i++){
-    //    scanf(" %c", &s[i]);
-    //}
-
     while (s[c] != '\0') {
         if (s[c] == 'a' || s[c] == 'A' || s[c] == 'e' || s[c] == 'E' || s[c] == 'i' || s[c] == 'I' || s[c] =='o' || s[c]=='O' || s[c] == 'u' || s[c] == 'U') {
             soma_vogal++;
