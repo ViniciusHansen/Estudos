@@ -46,7 +46,7 @@ void busca_contato(contact contato[]){
     fgets(nome_busca, 100, stdin);
     for(int i=0;i<N;i++){
         if (strcmp(nome_busca,contato[i].nome)==0){
-            printf("nome: %s\nemail: %s\ntelefone: %i\n", contato[i].nome, contato[i].email, &contato[i].telefone.numero);
+            printf("nome: %s\nemail: %s\ntelefone: %ls\n", contato[i].nome, contato[i].email, &contato[i].telefone.numero);
         }
     }
 }
@@ -86,7 +86,7 @@ contact add_contato(contact contato[], int count){
 	fgets(p->endereco.rua, 20, stdin);
     fflush(stdin);
     printf("Número: \n");
-    scanf("%i", &p->endereco.numero);
+    scanf("%ls", &p->endereco.numero);
     __fpurge(stdin);
 	printf("Complemento: \n");
 	fgets(p->endereco.complemento, 20, stdin);
@@ -96,7 +96,7 @@ contact add_contato(contact contato[], int count){
     fflush(stdin);
 	printf("CEP: \n");
     __fpurge(stdin);
-    scanf("%[^\n]", &p->endereco.cep);
+    scanf("%ls", &p->endereco.cep);
     __fpurge(stdin);
 	printf("Cidade: \n");
 	fgets(p->endereco.cidade, 20, stdin);
@@ -109,11 +109,11 @@ contact add_contato(contact contato[], int count){
     fflush(stdin);
     printf("Fone (DDD): \n");
     __fpurge(stdin);
-	scanf("%[^\n]", &p->telefone.ddd);
+	scanf("%ls", &p->telefone.ddd);
     __fpurge(stdin);
     printf("Fone (numero): \n");
 	while (getchar() != '\n'){
-        scanf("%[^\n]", &p->telefone.numero);
+        scanf("%ls", &p->telefone.numero);
     }
     __fpurge(stdin);
 
@@ -168,11 +168,11 @@ int main(void){
             case 1: busca_contato(contato);
 			   break;
             case 2: printf("escreva o mes(número):\n");
-                    scanf("%i", nb_mes);
+                    scanf("%i", &nb_mes);
                     aniversarios_mes(nb_mes, contato);
 			   break;
             case 3: printf("escreva a data (dd/mm):\n");
-                    scanf("%i/%i", dia, nb_mes);
+                    scanf("%i/%i", &dia, &nb_mes);
                     aniversarios_dia(dia, nb_mes, contato);
 			   break;
 			case 4:
@@ -183,7 +183,7 @@ int main(void){
             case 5:
                     contato = rm_contato(contato, count);
                     count--;
-                    contato = realloc(contato, (count+1) * sizeof(contato));
+                    contato = realloc(contato, (count) * sizeof(contato));
                break;
 		}
 
