@@ -40,11 +40,11 @@ typedef struct
 } contact;
 
 
-void busca_contato(contact contato[]){
+void busca_contato(contact contato[], int max){
     char nome_busca[100];
     printf("Insira o nome do contato que deseja buscar:\n");
     fgets(nome_busca, 100, stdin);
-    for(int i=0;i<N;i++){
+    for(int i=0;i<max;i++){
         if (strcmp(nome_busca,contato[i].nome)==0){
             printf("nome: %s\nemail: %s\ntelefone: %ls\n", contato[i].nome, contato[i].email, &contato[i].telefone.numero);
         }
@@ -165,7 +165,7 @@ int main(void){
         __fpurge(stdin);
 
 		switch(opcao) {
-            case 1: busca_contato(contato);
+            case 1: busca_contato(contato, count);
 			   break;
             case 2: printf("escreva o mes(número):\n");
                     scanf("%i", &nb_mes);
@@ -183,7 +183,7 @@ int main(void){
             case 5:
                     contato = rm_contato(contato, count);
                     count--;
-                    contato = realloc(contato, (count) * sizeof(contato));
+                    contato = realloc(contato, (count+1) * sizeof(contato));
                break;
 		}
 
