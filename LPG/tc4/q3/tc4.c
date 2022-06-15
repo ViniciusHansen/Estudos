@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 int main(void){
-    int n, nb,pos=0, neg=0;
+    int n, nb, *seq, i=0, pos=0, neg=0;
     FILE *entrada = fopen("dados.in", "r");
     FILE *saida = fopen("resposta.out", "w");
+
+    //int *seq = malloc(sizeof(int) * n);
+
 
     while (true){
         fscanf(entrada, "%i", &n);
@@ -12,16 +16,23 @@ int main(void){
             break;
         }
         else{
-            for(int i=0;i<n;i++){
-                fscanf(entrada, "%i", &nb);
-                if (nb >= 0){
+            seq = malloc(sizeof(int) * n);
+            for(int j=0;j<n;j++){
+                seq[j] = malloc(sizeof(int));
+                fscanf(entrada, "%i", seq[j]);
+            }
+
+            for(i=0;i<n;i++){
+                if (seq[i] >= 0){
                     pos++;
                 }
                 else{
                     neg++;
                 }
             }
+            free(seq);
             fprintf(saida,"%i negativos, %i positivos\n",neg,pos);
+            //printf("\n");
         }
     n--;
     }
