@@ -7,9 +7,6 @@ int main(void){
     FILE *entrada = fopen("dados.in", "r");
     FILE *saida = fopen("resposta.out", "w");
 
-    //int *seq = malloc(sizeof(int) * n);
-
-
     while (true){
         fscanf(entrada, "%i", &n);
         if (n<=0){
@@ -18,8 +15,7 @@ int main(void){
         else{
             seq = malloc(sizeof(int) * n);
             for(int j=0;j<n;j++){
-                seq[j] = malloc(sizeof(int));
-                fscanf(entrada, "%i", seq[j]);
+                fscanf(entrada, "%i", &seq[j]);
             }
 
             for(i=0;i<n;i++){
@@ -32,7 +28,6 @@ int main(void){
             }
             free(seq);
             fprintf(saida,"%i negativos, %i positivos\n",neg,pos);
-            //printf("\n");
         }
     n--;
     }
