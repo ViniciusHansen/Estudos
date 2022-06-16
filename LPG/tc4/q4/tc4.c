@@ -9,6 +9,7 @@ int main(void){
     while (!feof(entrada)){
             seq = malloc(sizeof(int) * n);
             for(int j=0;j<n;j++){
+                fseek(entrada,0 ,SEEK_SET);
                 fread(&seq[j], sizeof(int),1,entrada);
             }
 

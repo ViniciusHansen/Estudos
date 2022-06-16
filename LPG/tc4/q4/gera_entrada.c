@@ -11,16 +11,13 @@ int main(void){
     scanf("%i", &casos);
     while (casos){
         n = (rand() % 30) + 1;
-        fprintf(arq, "%i ", n);
+        fwrite(&n, sizeof(int),1, arq);
         for (int i=0;i<n;i++){
             temp_num = (rand() % (upper - lower + 1)) + lower;
-            //fprintf(arq, "%i ", temp_num);
             fwrite(&temp_num, sizeof(int),1, arq);
         }
-        //fprintf(arq, "\n");
         casos--;
     }
-    //fprintf(arq,"0\n");
     fclose(arq);
     return 0;
 }
