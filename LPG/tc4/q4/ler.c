@@ -14,6 +14,8 @@ int main(void){
             for (int j=0;j<n;j++){
                 fread(&v[j], sizeof(v[j]), 1, entrada);
             }
+
+            /*
             for(i=0;i<n;i++){
                 if (v[i] >= 0){
                     pos++;
@@ -24,6 +26,12 @@ int main(void){
             }
             free(v);
             printf("%i negativos, %i positivos\n",neg,pos);
+*/
+            for (int i=0;i<n;i++){
+                printf("%i ", v[i]);
+            }
+            printf("\n");
+            free(v);
   }
     fclose(entrada);
     return 0;
