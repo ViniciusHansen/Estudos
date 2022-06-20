@@ -11,6 +11,7 @@ int main(void){
     scanf("%i", &casos);
     while (casos){
         n = (rand() % 30) + 1;
+        fseek(arq, 0, SEEK_SET);
         fwrite(&n, sizeof(int),1, arq);
         for (int i=0;i<n;i++){
             temp_num = (rand() % (upper - lower + 1)) + lower;
