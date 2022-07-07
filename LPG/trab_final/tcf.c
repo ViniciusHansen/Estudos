@@ -14,24 +14,74 @@ typedef struct{
     int minuto;
 } Hora;
 
-
 typedef struct{
     Data data;
     Hora inicio;
     Hora fim;
     char local[200];
-    char descrição[200];
+    char desc[200];
 } Evento;
 
+int main(void){
+    int count=0, opcao;
+    Evento *evento = (Evento *) malloc(sizeof(Evento) * count);
+    FILE *arq = fopen("arq.bin", "rb");
 
-void busca_contato(contact contato[], int max){
-    char nome_busca[100];
-    printf("Insira o nome do contato que deseja buscar:\n");
-    fgets(nome_busca, 100, stdin);
+    do {
+		printf("Escolha uma opcao:\n");
+		printf(" 1 - Adicionar evento \n");
+		printf(" 2 - \n");
+		printf(" 0 - Sair\n");
+
+		scanf("%i", &opcao);
+        __fpurge(stdin);
+
+		switch(opcao) {
+            case 1: evento[count] = cadastrar(evento, count);
+                    count++;
+                    evento = realloc(evento, (count+1)*sizeof(evento));
+			   break;
+            case 2: printf("escreva o mes(número):\n");
+                    scanf("%i", &nb_mes);
+                    aniversarios_mes(nb_mes, contato);
+			   break;
+		}
+
+	} while(opcao);
+
+
+    return 0;
+}
+
+Evento cadastrar(Evento evento, int count){
+    Evento *temp =  (Evento *) malloc(sizeof(Evento));
+    if (p == NULL){
+        printf("erro no malloc\n");
+    }
+
+    printf("Entre com a data no formato dd/mm/aaaa: \n");
+	scanf("%i/%i/%i", &temp->data.dia, &temp->data.mes, &temp->data.ano);
+    printf("Entre com o horário de início do evento no formato hh:mm: \n");
+	scanf("%i:%i", &temp->inicio.hora, &temp->inicio.minuto);
+    printf("Entre com o horário de término do evento no formato hh:mm: \n");
+	scanf("%i:%i", &temp->fim.hora, &temp->fim.minuto);
+    printf("Local: \n");
+    fgets(temp->local, 200, stdin);
+    fflush(stdin);
+    printf("Descrição: \n");
+    fgets(temp->desc, 200, stdin);
+    fflush(stdin);
+
+    count++;
+    return *temp;
+    free(temp);
+}
+
+
+
+void mostra_eventos(Evento evento, int max){
     for(int i=0;i<max;i++){
-        if (strcmp(nome_busca,contato[i].nome)==0){
-            printf("nome: %s\nemail: %s\ntelefone: %ls\n", contato[i].nome, contato[i].email, &contato[i].telefone.numero);
-        }
+        printf("nome: %s\nemail: %s\ntelefone: %ls\n", contato[i].nome, contato[i].email, &contato[i].telefone.numero);
     }
 }
 
@@ -52,61 +102,6 @@ void aniversarios_dia(int dia, int nb_mes, contact contato[]){
 }
 
 
-
-contact add_contato(contact contato[], int count){
-
-    contact *p =  (contact *) malloc(sizeof(contact));
-    if (p == NULL){
-        printf("erro no malloc\n");
-    }
-
-    printf("Entre com os dados da pessoa: \nNome: \n");
-	fgets(p->nome, 20, stdin);
-    fflush(stdin);
-    printf("Email: \n");
-	fgets(p->email, 20, stdin);
-    fflush(stdin);
-	printf("Rua: \n");
-	fgets(p->endereco.rua, 20, stdin);
-    fflush(stdin);
-    printf("Número: \n");
-    scanf("%ls", &p->endereco.numero);
-    __fpurge(stdin);
-	printf("Complemento: \n");
-	fgets(p->endereco.complemento, 20, stdin);
-    fflush(stdin);
-	printf("Bairro: \n");
-	fgets(p->endereco.bairro, 20, stdin);
-    fflush(stdin);
-	printf("CEP: \n");
-    __fpurge(stdin);
-    scanf("%ls", &p->endereco.cep);
-    __fpurge(stdin);
-	printf("Cidade: \n");
-	fgets(p->endereco.cidade, 20, stdin);
-    fflush(stdin);
-	printf("Estado: \n");
-	fgets(p->endereco.estado, 20, stdin);
-    fflush(stdin);
-	printf("País: \n");
-	fgets(p->endereco.pais, 20, stdin);
-    fflush(stdin);
-    printf("Fone (DDD): \n");
-    __fpurge(stdin);
-	scanf("%ls", &p->telefone.ddd);
-    __fpurge(stdin);
-    printf("Fone (numero): \n");
-	while (getchar() != '\n'){
-        scanf("%ls", &p->telefone.numero);
-    }
-    __fpurge(stdin);
-
-
-    count++;
-    return *p;
-
-    free(p);
-}
 
 contact* troca(contact contato[], int cod, int max){
     contact temp;
@@ -134,7 +129,7 @@ int main(void){
     int count=0;
     contact *contato = (contact *) malloc(sizeof(contact) * (count+1));
     char nome_busca[100];
-    int opcao, nb_mes, dia;
+    int opcao;
     do {
 		printf("Escolha uma opcao:\n");
 		printf(" 1 - listar contatos\n");
@@ -145,7 +140,6 @@ int main(void){
 		printf(" 0 - sair\n");
 
 		scanf("%i", &opcao);
-		//fflush(stdin;)
         __fpurge(stdin);
 
 		switch(opcao) {
