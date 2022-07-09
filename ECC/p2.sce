@@ -9,23 +9,17 @@ clear,clc;
 
 
 //Questão 1
-    c1=10
-    t1=0
-    C1=polar(complex(c1,t1))
-    
-    
-    c2=5
-    t2=45
-    C2=polar(complex(c2,t2))
-    disp(C2)
-    
-    c3=20
-    t3=90
-    C3=polar(complex(c3,t3))
-    // não faz sentido 
-    // não é isso
-    
-    printf("Questão 1: \n V1(t) = %i \n V2(t) = %i \n V3(t) = %i", real(C1), real(C2), real(C3));
+    C1=retangular(10,0)
+    [raio ang] = polar(C1)
+    ang = real(ang) * 180/%pi
+    C2=retangular(5,45)
+    [raio2 ang2] = polar(C2)
+    ang2 = real(ang2) * 180/%pi
+    C3=retangular(20,90)
+    [raio3 ang3] = polar(C3)
+    ang3 = real(ang3) * 180/%pi
+
+    printf("Questão 1: \n V1(t) = %.2f /_ %.2f \n V2(t) = %.2f /_ %.2f \n V3(t) = %.2f /_ %.2f",raio, ang, raio2, ang2, raio3, ang3 );
     
     
     printf("\n---------------------------------------\n")
@@ -50,10 +44,11 @@ clear,clc;
     [raio2 ang2] = polar(Vs)
     ang2 = real(ang2) * 180/%pi
     
-    printf("Questão 2: \n (Corrente) \n    Raio: %.2f \n    angulo: %.2f\n (Tensão) \n    Raio: %.2f \n    angulo: %.2f", raio, ang, raio2, ang2)
+    printf("Questão 2: \n Corrente = %.2f /_ %.2f\n Tensão= %.2f /_ %.2f\n", raio, ang, raio2, ang2)
     printf("\n---------------------------------------\n")
 
 // Questão 4
+    //Queremos Vc e It(Is)
     R=5
     Xl=8
     Xc=12
@@ -61,13 +56,17 @@ clear,clc;
     Zc=complex(R, Xc)
     //V=R*I
     Ic=V/Zc
-    Vc= Zc * Ic
+    Vc= (V * complex(0, Xc))/Zc
     Zl=complex(0,Xl)
     Il=V/Zl
     It= Ic + Il
-    disp(It)
-
-
+    [raio ang]= polar(It)
+    ang = real(ang) * 180/%pi
+    [raio2 ang2]= polar(Vc)
+    ang2 = real(ang2) * 180/%pi
+    
+    printf("Questão 4:\n Itotal= %.2f /_ %.2f\n Vc= %.2f /_ %.2f\n", raio, ang, raio2, ang2)
+    printf("\n---------------------------------------\n")
 
 
 
@@ -86,7 +85,7 @@ clear,clc;
     ang = real(ang) * 180/%pi
     raio = real(raio)
     
-    printf("Questão 5:\n Intensidade da Corrente: %i\n Angulo de defasagem entre\n a corrente e a tensão da fonte: %.2f", raio, ang)
+    printf("Questão 5:\n Intensidade da Corrente: %i\n Angulo de defasagem entre\n a corrente e a tensão da fonte: %.2f\n", raio, ang)
     printf("\n---------------------------------------\n")
 
     
@@ -110,8 +109,29 @@ clear,clc;
     [raio2 ang2] = polar(Is)
     ang2 = real(ang2) * 180/%pi
     printf("Questão 6:\n Zr=%.2f /_ %.2f \n Is=%.2f /_ %.2f \n", raio, ang, raio2, ang2)
+    printf("\n---------------------------------------\n")
 
-    
+// Questão 7
+    R1=3
+    R2=8
+    L=0.0106
+    C=0.000446
+    f=60
+    V=retangular(100,0)
+    Xl=2*%pi*f*L        //imaginario
+    Xc=(-1)/(2*%pi*f*C) //imaginario
+    Zl=complex(R1,Xl)
+    Zc=complex(R2,Xc)
+    Zeq= (Zl*Zc)/(Zl+Zc)
+    [raio ang] = polar(Zeq)
+    ang = real(ang) * 180/%pi
+    //correntes
+    I1= V/Zl
+    [raio2 ang2]=polar(I1)
+    I2= V/Zc
+    [raio3 ang3]=polar(I2)
+    printf("Questão 7:\n Zeq= %.2f /_ %.2f \n I1= %.2f /_ %.2f \n I2 = %.2f /_ %.2f \n", raio, ang, raio2, ang2, raio3, ang3)
+    printf("\n---------------------------------------\n")
 
 
 
