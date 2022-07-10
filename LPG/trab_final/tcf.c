@@ -113,7 +113,7 @@ void eventos_hoje(Evento evento[], int max){
     scanf("%i/%i/%i", dia, mes, ano);
     printf("Estes são os eventos agendados para essa data:\n");
     for(int i=0;i<max;i++){
-        if (&evento->data.dia == dia && &evento->data.mes == mes && &evento->data.ano == ano){
+        if (evento->data.dia == dia && evento->data.mes == mes && evento->data.ano == ano){
             printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
                 %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i].data.dia, \
                 &evento[i].data.mes, &evento[i].data.ano, &evento[i].inicio.hora, \
@@ -131,8 +131,8 @@ void proximos_eventos(Evento evento[], int max){
     printf("Estes são os 5 próximos eventos a partir dessa data:\n");
 
     for(int i=0;i<max;i++){
-        if (&evento.data.dia >= dia && &evento.data.mes >= mes && \
-                &evento.data.ano >= ano || count_aux >= 5 ){
+        if (evento->data.dia >= dia && evento->data.mes >= mes && \
+                evento->data.ano >= ano || count_aux >= 5 ){
             printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
                 %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i].data.dia, \
                 &evento[i].data.mes, &evento[i].data.ano, &evento[i].inicio.hora, \
@@ -151,9 +151,9 @@ Evento* remover_evento(Evento evento[], int max){
     scanf("%i:%i", hora, minuto);
 
     for(int i=0;i<max;i++){
-        if (&evento->data.dia == dia && &evento->data.mes == mes &&
-                &evento->data.ano == ano && &evento->inicio.hora == hora &&
-                &evento->inicio.minuto == minuto){
+        if (evento->data.dia == dia && evento->data.mes == mes &&
+                evento->data.ano == ano && evento->inicio.hora == hora &&
+                evento->inicio.minuto == minuto){
             return troca(evento, i, max);
         }
     }
