@@ -22,10 +22,18 @@ typedef struct{
     char desc[200];
 } Evento;
 
+Evento cadastrar(Evento evento[], int count);
+void mostra_eventos(Evento evento[], int max);
+void eventos_hoje(Evento evento[], int max);
+void proximos_eventos(Evento evento[], int count);
+Evento* remover_evento(Evento evento[], int max);
+Evento* troca(Evento evento[], int cod, int max);
+
 int main(void){
     int count=0, opcao;
-    Evento *evento = (Evento *) malloc(sizeof(Evento) * count);
-    FILE *arq = fopen("arq.bin", "rb");
+    Evento *evento = (Evento *) malloc(sizeof(Evento) * (count +1));
+    FILE *arq = fopen("agenda.bin", "a+b");
+    fread(&evento, sizeof(Evento), (count+1), arq);
 
     do {
 		printf("Escolha uma opção:\n");
@@ -42,13 +50,21 @@ int main(void){
 		switch(opcao) {
             case 1: evento[count] = cadastrar(evento, count);
                     count++;
-                    evento = realloc(evento, (count+1)*sizeof(evento));
-			   break;
-            case 2: printf("escreva o mes(número):\n");
-                    scanf("%i", &nb_mes);
-                    aniversarios_mes(nb_mes, contato);
-			   break;
-            case 0: free(evento);
+                    evento = realloc(evento, (count+1)*sizeof(Evento));
+			        break;
+            case 2: mostra_eventos(evento, count);
+			        break;
+            case 3: eventos_hoje(evento, count);
+                    break;
+            case 4: proximos_eventos(evento, count);
+                    break;
+            case 5: evento = remover_evento(evento, count);
+                    count--;
+                    evento = realloc(evento, (count+1)*sizeof(Evento));
+                    break;
+            case 6: fwrite(evento, 1, sizeof(Evento), arq);
+                    fclose(arq);
+                    free(evento);
                     return 0;
 		}
 
@@ -58,9 +74,9 @@ int main(void){
     return 1;
 }
 
-Evento* cadastrar(Evento evento, int count){
+Evento cadastrar(Evento evento[], int count){
     Evento *temp =  (Evento *) malloc(sizeof(Evento));
-    if (p == NULL){
+    if (temp == NULL){
         printf("erro no malloc\n");
     }
 
@@ -79,49 +95,49 @@ Evento* cadastrar(Evento evento, int count){
 
     count++;
     return *temp;
-    free(temp);
 }
 
-void mostra_eventos(Evento evento, int max){
+void mostra_eventos(Evento evento[], int max){
     for(int i=0;i<max;i++){
-        printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim:
-                %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i]->data.dia,
-                &evento[i]->data.mes, &evento[i]->data.ano, &evento[i]->inicio.hora,
-                &evento[i]->inicio.minuto, &evento[i]->fim.hora, &evento[i]->fim.minuto,
-                evento[i]->local, evento[i]->desc);
+        printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
+                %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i].data.dia, \
+                &evento[i].data.mes, &evento[i].data.ano, &evento[i].inicio.hora, \
+                &evento[i].inicio.minuto, &evento[i].fim.hora, &evento[i].fim.minuto, \
+                evento[i].local, evento[i].desc);
     }
 }
 
-void eventos_hoje(Evento evento, int max){
+void eventos_hoje(Evento evento[], int max){
     int dia, mes, ano;
     printf("Insira a data que deseja buscar (dd/mm/aaaa):\n");
     scanf("%i/%i/%i", dia, mes, ano);
     printf("Estes são os eventos agendados para essa data:\n");
     for(int i=0;i<max;i++){
-        if (&evento.data.dia == dia && &evento.data.mes == mes && &evento.data.ano == ano){
-            printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim:
-                %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i]->data.dia,
-                &evento[i]->data.mes, &evento[i]->data.ano, &evento[i]->inicio.hora,
-                &evento[i]->inicio.minuto, &evento[i]->fim.hora, &evento[i]->fim.minuto,
-                evento[i]->local, evento[i]->desc);
+        if (&evento->data.dia == dia && &evento->data.mes == mes && &evento->data.ano == ano){
+            printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
+                %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i].data.dia, \
+                &evento[i].data.mes, &evento[i].data.ano, &evento[i].inicio.hora, \
+                &evento[i].inicio.minuto, &evento[i].fim.hora, &evento[i].fim.minuto, \
+                evento[i].local, evento[i].desc);
 
         }
     }
 }
 
-void proximos_eventos(Evento evento, int count){
+void proximos_eventos(Evento evento[], int max){
     int dia, mes, ano, count_aux=0;
     printf("Insira a data que deseja buscar (dd/mm/aaaa):\n");
     scanf("%i/%i/%i", dia, mes, ano);
     printf("Estes são os 5 próximos eventos a partir dessa data:\n");
+
     for(int i=0;i<max;i++){
-        if (&evento.data.dia >= dia && &evento.data.mes >= mes &&
+        if (&evento.data.dia >= dia && &evento.data.mes >= mes && \
                 &evento.data.ano >= ano || count_aux >= 5 ){
-            printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim:
-                %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i]->data.dia,
-                &evento[i]->data.mes, &evento[i]->data.ano, &evento[i]->inicio.hora,
-                &evento[i]->inicio.minuto, &evento[i]->fim.hora, &evento[i]->fim.minuto,
-                evento[i]->local, evento[i]->desc);
+            printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
+                %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i].data.dia, \
+                &evento[i].data.mes, &evento[i].data.ano, &evento[i].inicio.hora, \
+                &evento[i].inicio.minuto, &evento[i].fim.hora, &evento[i].fim.minuto, \
+                evento[i].local, evento[i].desc);
             count_aux++;
         }
     }
@@ -135,21 +151,19 @@ Evento* remover_evento(Evento evento[], int max){
     scanf("%i:%i", hora, minuto);
 
     for(int i=0;i<max;i++){
-        if (&evento.data.dia == dia && &evento.data.mes == mes &&
-                &evento.data.ano == ano && &evento.inicio.hora == hora &&
-                &evento.inicio.minuto == minuto){
+        if (&evento->data.dia == dia && &evento->data.mes == mes &&
+                &evento->data.ano == ano && &evento->inicio.hora == hora &&
+                &evento->inicio.minuto == minuto){
             return troca(evento, i, max);
         }
     }
 }
 
-
-// referencia
-contact* troca(contact contato[], int cod, int max){
-    contact temp;
-    temp = contato[cod];
-    contato[cod] = contato[max-1];
-    contato[max-1] = temp;
-    return contato;
+Evento* troca(Evento evento[], int cod, int max){
+    Evento temp;
+    temp = evento[cod];
+    evento[cod] = evento[max-1];
+    evento[max-1] = temp;
+    return evento;
 }
 
