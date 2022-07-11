@@ -100,9 +100,9 @@ Evento cadastrar(Evento evento[], int count){
 void mostra_eventos(Evento evento[], int max){
     for(int i=0;i<max;i++){
         printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
-                %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i].data.dia, \
-                &evento[i].data.mes, &evento[i].data.ano, &evento[i].inicio.hora, \
-                &evento[i].inicio.minuto, &evento[i].fim.hora, &evento[i].fim.minuto, \
+                %i:%i \n Local: %s \n, Descrição: %s \n\n", evento[i].data.dia, \
+                evento[i].data.mes, evento[i].data.ano, evento[i].inicio.hora, \
+                evento[i].inicio.minuto, evento[i].fim.hora, evento[i].fim.minuto, \
                 evento[i].local, evento[i].desc);
     }
 }
@@ -115,9 +115,9 @@ void eventos_hoje(Evento evento[], int max){
     for(int i=0;i<max;i++){
         if (evento->data.dia == dia && evento->data.mes == mes && evento->data.ano == ano){
             printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
-                %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i].data.dia, \
-                &evento[i].data.mes, &evento[i].data.ano, &evento[i].inicio.hora, \
-                &evento[i].inicio.minuto, &evento[i].fim.hora, &evento[i].fim.minuto, \
+                %i:%i \n Local: %s \n, Descrição: %s \n\n", evento[i].data.dia, \
+                evento[i].data.mes, evento[i].data.ano, evento[i].inicio.hora, \
+                evento[i].inicio.minuto, evento[i].fim.hora, evento[i].fim.minuto, \
                 evento[i].local, evento[i].desc);
 
         }
@@ -134,9 +134,9 @@ void proximos_eventos(Evento evento[], int max){
         if (evento->data.dia >= dia && evento->data.mes >= mes && \
                 evento->data.ano >= ano || count_aux >= 5 ){
             printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
-                %i:%i \n Local: %s \n, Descrição: %s \n\n", &evento[i].data.dia, \
-                &evento[i].data.mes, &evento[i].data.ano, &evento[i].inicio.hora, \
-                &evento[i].inicio.minuto, &evento[i].fim.hora, &evento[i].fim.minuto, \
+                %i:%i \n Local: %s \n, Descrição: %s \n\n", evento[i].data.dia, \
+                evento[i].data.mes, evento[i].data.ano, evento[i].inicio.hora, \
+                evento[i].inicio.minuto, evento[i].fim.hora, evento[i].fim.minuto, \
                 evento[i].local, evento[i].desc);
             count_aux++;
         }
