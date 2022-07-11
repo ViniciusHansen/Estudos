@@ -18,8 +18,8 @@ typedef struct{
     Data data;
     Hora inicio;
     Hora fim;
-    char local[200];
-    char desc[200];
+    char local[100];
+    char desc[100];
 } Evento;
 
 Evento cadastrar(Evento evento[], int count);
@@ -62,7 +62,7 @@ int main(void){
                     count--;
                     evento = realloc(evento, (count+1)*sizeof(Evento));
                     break;
-            case 6: fwrite(evento, 1, sizeof(Evento), arq);
+            case 6: fwrite(evento, count, sizeof(Evento), arq);
                     fclose(arq);
                     free(evento);
                     return 0;
@@ -86,14 +86,14 @@ Evento cadastrar(Evento evento[], int count){
 	scanf("%i:%i", &temp->inicio.hora, &temp->inicio.minuto);
     printf("Entre com o horário de término do evento no formato hh:mm: \n");
 	scanf("%i:%i", &temp->fim.hora, &temp->fim.minuto);
+    __fpurge(stdin);
     printf("Local: \n");
-    fgets(temp->local, 200, stdin);
-    fflush(stdin);
+    fgets(temp->local, 100, stdin);
     printf("Descrição: \n");
-    fgets(temp->desc, 200, stdin);
-    fflush(stdin);
+    fgets(temp->desc, 100, stdin);
 
-    count++;
+    printf("a");
+
     return *temp;
 }
 
