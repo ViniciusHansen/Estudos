@@ -75,7 +75,7 @@ int main(void){
 }
 
 Evento cadastrar(Evento evento[], int count){
-    Evento *temp =  (Evento *) malloc(sizeof(Evento));
+    Evento *temp = (Evento *) malloc(sizeof(Evento));
     if (temp == NULL){
         printf("erro no malloc\n");
     }
@@ -110,7 +110,7 @@ void mostra_eventos(Evento evento[], int max){
 void eventos_hoje(Evento evento[], int max){
     int dia, mes, ano;
     printf("Insira a data que deseja buscar (dd/mm/aaaa):\n");
-    scanf("%i/%i/%i", dia, mes, ano);
+    scanf("%i/%i/%i", &dia, &mes, &ano);
     printf("Estes são os eventos agendados para essa data:\n");
     for(int i=0;i<max;i++){
         if (evento->data.dia == dia && evento->data.mes == mes && evento->data.ano == ano){
@@ -127,7 +127,7 @@ void eventos_hoje(Evento evento[], int max){
 void proximos_eventos(Evento evento[], int max){
     int dia, mes, ano, count_aux=0;
     printf("Insira a data que deseja buscar (dd/mm/aaaa):\n");
-    scanf("%i/%i/%i", dia, mes, ano);
+    scanf("%i/%i/%i", &dia, &mes, &ano);
     printf("Estes são os 5 próximos eventos a partir dessa data:\n");
 
     for(int i=0;i<max;i++){
@@ -146,9 +146,9 @@ void proximos_eventos(Evento evento[], int max){
 Evento* remover_evento(Evento evento[], int max){
     int dia, mes, ano, hora, minuto;
     printf("Insira a data que deseja buscar (dd/mm/aaaa):\n");
-    scanf("%i/%i/%i", dia, mes, ano);
+    scanf("%i/%i/%i", &dia, &mes, &ano);
     printf("Insira o horário de início do evento a ser deletado (hh:mm):\n");
-    scanf("%i:%i", hora, minuto);
+    scanf("%i:%i", &hora, &minuto);
 
     for(int i=0;i<max;i++){
         if (evento->data.dia == dia && evento->data.mes == mes &&
