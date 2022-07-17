@@ -51,6 +51,20 @@ int main(void){
             case 1: evento[count] = cadastrar(evento, count);
                     count++;
                     evento = realloc(evento, (count+1)*sizeof(Evento));
+                    for(int i=0;i<count;i++){
+                        if(evento[i].data.dia == evento[count].data.dia && \
+                        evento[i].data.mes == evento[count].data.mes && \
+                        evento[i].data.ano == evento[count].data.ano && \
+                        evento[i].inicio.hora == evento[count].inicio.hora && \
+                        evento[i].inicio.minuto == evento[count].inicio.minuto && \
+                        evento[i].fim.hora == evento[count].fim.hora && \
+                        evento[i].fim.minuto == evento[count].fim.minuto){
+                            remover_evento(evento, count);
+                            count--;
+                            evento = realloc(evento, (count+1)*sizeof(Evento));
+                            printf("Erro\nEvento já existe!\n");
+                        }
+                    }
 			        break;
             case 2: mostra_eventos(evento, count);
 			        break;
@@ -92,7 +106,7 @@ Evento cadastrar(Evento evento[], int count){
     printf("Descrição: \n");
     fgets(temp->desc, 100, stdin);
 
-    printf("a");
+
 
     return *temp;
 }
