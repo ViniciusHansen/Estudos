@@ -30,10 +30,16 @@ Evento* remover_evento(Evento evento[], int max);
 Evento* troca(Evento evento[], int cod, int max);
 
 int main(void){
-    int count=0, opcao;
-    Evento *evento = (Evento *) malloc(sizeof(Evento) * (count +1));
+    int count=0, retorno, opcao;
+    Evento *evento = (Evento *) malloc(sizeof(Evento));
     FILE *arq = fopen("agenda.bin", "a+b");
-    fread(&evento, sizeof(Evento), (count+1), arq);
+    while(!feof){
+        retorno = fread(&evento, sizeof(Evento), 1, arq);
+        if(retorno == 1){
+            count++;
+            evento = realloc(evento, (count+1)*sizeof(Evento));
+        }
+    }
 
     do {
 		printf("Escolha uma opção:\n");
@@ -59,7 +65,7 @@ int main(void){
                         evento[i].inicio.minuto == evento[count].inicio.minuto && \
                         evento[i].fim.hora == evento[count].fim.hora && \
                         evento[i].fim.minuto == evento[count].fim.minuto){
-                            remover_evento(evento, count);
+                            evento = remover_evento(evento, count);
                             count--;
                             evento = realloc(evento, (count+1)*sizeof(Evento));
                             printf("Erro\nEvento já existe!\n");
