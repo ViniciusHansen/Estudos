@@ -34,8 +34,8 @@ int main(void){
     Evento *evento = (Evento *) malloc(sizeof(Evento));
     FILE *arq = fopen("agenda.bin", "a+b");
     while(!feof){
-        retorno = fread(&evento, sizeof(Evento), 1, arq);
-        if(retorno == 1){
+        retorno = fread(evento, sizeof(Evento), 1, arq);
+        if(retorno != NULL){
             count++;
             evento = realloc(evento, (count+1)*sizeof(Evento));
         }
