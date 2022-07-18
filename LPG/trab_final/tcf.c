@@ -32,12 +32,16 @@ Evento* troca(Evento evento[], int cod, int max);
 int main(void){
     int count=0, retorno, opcao;
     Evento *evento = (Evento *) malloc(sizeof(Evento));
-    FILE *arq = fopen("agenda.bin", "a+b");
+    FILE *arq = fopen("agenda.bin", "rb");
+    FILE *out = fopen("agenda.bin","wb");
     while(!feof){
         retorno = fread(evento, sizeof(Evento), 1, arq);
-        if(retorno != NULL){
+        if(retorno == 1){
             count++;
             evento = realloc(evento, (count+1)*sizeof(Evento));
+        }
+        else{
+            break;
         }
     }
 
@@ -59,7 +63,7 @@ int main(void){
                     if (evento[count].data.mes < 0 || evento[count].data.mes > 12 || \
                     evento[count].data.dia < 0 || evento[count].data.ano < 0){
                         printf("Erro! Data inválida ou em conflito com outro evento!\n");
-                        break;
+                        break; // não faz nada pois o evento será sobreescrito na proxima vez
                     }else{
                         count++;
                         evento = realloc(evento, (count+1)*sizeof(Evento));
@@ -75,8 +79,9 @@ int main(void){
                     count--;
                     evento = realloc(evento, (count+1)*sizeof(Evento));
                     break;
-            case 6: fwrite(evento, count, sizeof(Evento), arq);
-                    fclose(arq);
+            case 6: fclose(arq);
+                    fwrite(evento, sizeof(Evento), count+1, out);
+                    fclose(out);
                     free(evento);
                     return 0;
 		}
