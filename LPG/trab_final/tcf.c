@@ -55,23 +55,16 @@ int main(void){
 
 		switch(opcao) {
             case 1: evento[count] = cadastrar(evento, count);
-                    count++;
-                    evento = realloc(evento, (count+1)*sizeof(Evento));
-                    for(int i=0;i<count;i++){
-                        if(evento[i].data.dia == evento[count].data.dia && \
-                        evento[i].data.mes == evento[count].data.mes && \
-                        evento[i].data.ano == evento[count].data.ano && \
-                        evento[i].inicio.hora == evento[count].inicio.hora && \
-                        evento[i].inicio.minuto == evento[count].inicio.minuto && \
-                        evento[i].fim.hora == evento[count].fim.hora && \
-                        evento[i].fim.minuto == evento[count].fim.minuto){
-                            evento = remover_evento(evento, count);
-                            count--;
-                            evento = realloc(evento, (count+1)*sizeof(Evento));
-                            printf("Erro\nEvento já existe!\n");
-                        }
+
+                    if (evento[count].data.mes < 0 || evento[count].data.mes > 12 || \
+                    evento[count].data.dia < 0 || evento[count].data.ano < 0){
+                        printf("Erro! Data inválida ou em conflito com outro evento!\n");
+                        break;
+                    }else{
+                        count++;
+                        evento = realloc(evento, (count+1)*sizeof(Evento));
+			            break;
                     }
-			        break;
             case 2: mostra_eventos(evento, count);
 			        break;
             case 3: eventos_hoje(evento, count);
@@ -113,6 +106,17 @@ Evento cadastrar(Evento evento[], int count){
     fgets(temp->desc, 100, stdin);
 
 
+    for(int i=0;i<=count;i++){
+        if(temp->data.dia == evento[i].data.dia && \
+        temp->data.mes == evento[i].data.mes && \
+        temp->data.ano == evento[i].data.ano && \
+        temp->inicio.hora == evento[i].inicio.hora && \
+        temp->inicio.minuto == evento[i].inicio.minuto && \
+        temp->fim.hora == evento[i].fim.hora && \
+        temp->fim.minuto == evento[i].fim.minuto){
+            temp->data.ano = -99999; //se ja existir , vamos invalidar a data para descartar o evento na função main
+        }
+    }
 
     return *temp;
 }
