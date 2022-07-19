@@ -72,10 +72,16 @@ int main(void){
                     break;
             case 4: proximos_eventos(evento, count);
                     break;
-            case 5: evento = remover_evento(evento, count);
-                    count--;
-                    evento = realloc(evento, (count+1)*sizeof(Evento));
-                    break;
+            case 5: if (count==0){
+                        printf("Erro!\nLista de Eventos vazia\n");
+                        break;
+                    }
+                    else{
+                        evento = remover_evento(evento, count);
+                        count--;
+                        evento = realloc(evento, (count+1)*sizeof(Evento));
+                        break;
+                    }
             case 6: fclose(arq);
                     FILE *out = fopen("agenda.bin","wb");
                     fwrite(evento, sizeof(Evento), count, out);
@@ -128,6 +134,10 @@ Evento cadastrar(Evento evento[], int count){
 }
 
 void mostra_eventos(Evento evento[], int max){
+    if (max==0){
+        printf("Erro!\nLista de Eventos vazia\n");
+        return;
+    }
     for(int i=0;i<max;i++){
         printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
                 %i:%i \n Local: %s \n, Descrição: %s \n\n", evento[i].data.dia, \
@@ -138,6 +148,10 @@ void mostra_eventos(Evento evento[], int max){
 }
 
 void eventos_hoje(Evento evento[], int max){
+    if (max==0){
+        printf("Erro!\nLista de Eventos vazia\n");
+        return;
+    }
     int dia, mes, ano;
     printf("Insira a data que deseja buscar (dd/mm/aaaa):\n");
     scanf("%i/%i/%i", &dia, &mes, &ano);
@@ -155,6 +169,10 @@ void eventos_hoje(Evento evento[], int max){
 }
 
 void proximos_eventos(Evento evento[], int max){
+    if (max==0){
+        printf("Erro!\nLista de Eventos vazia\n");
+        return;
+    }
     int dia, mes, ano, count_aux=0;
     printf("Insira a data que deseja buscar (dd/mm/aaaa):\n");
     scanf("%i/%i/%i", &dia, &mes, &ano);
