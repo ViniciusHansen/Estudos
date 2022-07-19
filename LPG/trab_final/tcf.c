@@ -33,15 +33,12 @@ int main(void){
     int count=0, retorno, opcao;
     Evento *evento = (Evento *) malloc(sizeof(Evento));
     FILE *arq = fopen("agenda.bin", "rb");
-    FILE *out = fopen("agenda.bin","wb");
-    while(!feof){
+    while(!feof(arq)){
         retorno = fread(evento, sizeof(Evento), 1, arq);
+        printf("%i\n",retorno);
         if(retorno == 1){
             count++;
             evento = realloc(evento, (count+1)*sizeof(Evento));
-        }
-        else{
-            break;
         }
     }
 
@@ -59,15 +56,15 @@ int main(void){
 
 		switch(opcao) {
             case 1: evento[count] = cadastrar(evento, count);
-
                     if (evento[count].data.mes < 0 || evento[count].data.mes > 12 || \
                     evento[count].data.dia < 0 || evento[count].data.ano < 0){
                         printf("Erro! Data inválida ou em conflito com outro evento!\n");
-                        break; // não faz nada pois o evento será sobreescrito na proxima vez
-                    }else{
+                        break;// não faz nada pois o evento será sobreescrito na proxima vez
+                    }
+                    else{
                         count++;
                         evento = realloc(evento, (count+1)*sizeof(Evento));
-			            break;
+                        break;
                     }
             case 2: mostra_eventos(evento, count);
 			        break;
@@ -80,7 +77,8 @@ int main(void){
                     evento = realloc(evento, (count+1)*sizeof(Evento));
                     break;
             case 6: fclose(arq);
-                    fwrite(evento, sizeof(Evento), count+1, out);
+                    FILE *out = fopen("agenda.bin","wb");
+                    fwrite(evento, sizeof(Evento), count, out);
                     fclose(out);
                     free(evento);
                     return 0;
@@ -97,11 +95,14 @@ Evento cadastrar(Evento evento[], int count){
     if (temp == NULL){
         printf("erro no malloc\n");
     }
+    __fpurge(stdin);
 
     printf("Entre com a data no formato dd/mm/aaaa: \n");
 	scanf("%i/%i/%i", &temp->data.dia, &temp->data.mes, &temp->data.ano);
+    __fpurge(stdin);
     printf("Entre com o horário de início do evento no formato hh:mm: \n");
 	scanf("%i:%i", &temp->inicio.hora, &temp->inicio.minuto);
+    __fpurge(stdin);
     printf("Entre com o horário de término do evento no formato hh:mm: \n");
 	scanf("%i:%i", &temp->fim.hora, &temp->fim.minuto);
     __fpurge(stdin);
