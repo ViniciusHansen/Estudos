@@ -204,6 +204,10 @@ Evento* remover_evento(Evento evento[], int max){
                 evento->inicio.minuto == minuto){
             return troca(evento, i, max);
         }
+        else{
+            printf("Evento não encontrado!\n");
+            exit;
+        }
     }
 }
 
