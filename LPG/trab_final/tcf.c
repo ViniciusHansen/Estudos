@@ -57,7 +57,9 @@ int main(void){
 		switch(opcao) {
             case 1: evento[count] = cadastrar(evento, count);
                     if (evento[count].data.mes < 0 || evento[count].data.mes > 12 || \
-                    evento[count].data.dia < 0 || evento[count].data.ano < 0){
+                    evento[count].data.dia < 0 || evento[count].data.ano < 0 || \
+                    evento[count].inicio.hora > 23 || evento[count].fim.hora > 23 || \
+                    evento[count].inicio.minuto > 59 ||  evento[count].fim.minuto > 59){
                         printf("Erro! Data inválida ou em conflito com outro evento!\n");
                         break;// não faz nada pois o evento será sobreescrito na proxima vez
                     }
