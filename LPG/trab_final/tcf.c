@@ -32,15 +32,20 @@ Evento* troca(Evento evento[], int cod, int max);
 int main(void){
     int count=0, retorno, opcao;
     Evento *evento = (Evento *) malloc(sizeof(Evento));
-    FILE *arq = fopen("agenda.bin", "rb");
+    FILE *arq = fopen("agenda", "rb");
     while(!feof(arq)){
-        retorno = fread(evento, sizeof(Evento), 1, arq);
+        retorno = fread(&evento[count], sizeof(Evento), 1, arq);
         printf("%i\n",retorno);
         if(retorno == 1){
             count++;
             evento = realloc(evento, (count+1)*sizeof(Evento));
+        }else{
+            count--;
+            evento = realloc(evento, (count+1)*sizeof(Evento));
         }
     }
+
+    //fseek(arq, 0, SEEK_SET);
 
     do {
 		printf("Escolha uma opção:\n");
@@ -85,7 +90,8 @@ int main(void){
                         break;
                     }
             case 6: fclose(arq);
-                    FILE *out = fopen("agenda.bin","wb");
+                    FILE *out = fopen("agenda","wb");
+                    fseek(arq, 0, SEEK_SET);
                     fwrite(evento, sizeof(Evento), count, out);
                     fclose(out);
                     free(evento);
