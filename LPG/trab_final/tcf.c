@@ -33,6 +33,9 @@ int main(void){
     int count=0, retorno, opcao;
     Evento *evento = (Evento *) malloc(sizeof(Evento));
     FILE *arq = fopen("agenda", "rb");
+    if (arq == NULL){
+        printf("Erro no arquivo!\n");
+    }
     while(!feof(arq)){
         retorno = fread(&evento[count], sizeof(Evento), 1, arq);
         printf("%i\n",retorno);
@@ -89,7 +92,9 @@ int main(void){
                     fclose(out);
                     free(evento);
                     return 0;
-		}
+		    default: printf("Opção inválida, Cabeção\n");
+                    break;
+        }
 
 	} while(opcao);
 
