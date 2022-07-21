@@ -39,13 +39,8 @@ int main(void){
         if(retorno == 1){
             count++;
             evento = realloc(evento, (count+1)*sizeof(Evento));
-        }else{
-            count--;
-            evento = realloc(evento, (count+1)*sizeof(Evento));
         }
     }
-
-    //fseek(arq, 0, SEEK_SET);
 
     do {
 		printf("Escolha uma opção:\n");
@@ -145,8 +140,7 @@ void mostra_eventos(Evento evento[], int max){
         return;
     }
     for(int i=0;i<max;i++){
-        printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: \
-                %i:%i \n Local: %s \n, Descrição: %s \n\n", evento[i].data.dia, \
+        printf("Data: %i/%i/%i \n Horário de início: %i:%i \n Horário fim: %i:%i \n Local: %s \n Descrição: %s \n\n", evento[i].data.dia, \
                 evento[i].data.mes, evento[i].data.ano, evento[i].inicio.hora, \
                 evento[i].inicio.minuto, evento[i].fim.hora, evento[i].fim.minuto, \
                 evento[i].local, evento[i].desc);
