@@ -27,7 +27,9 @@ void mostra_eventos(Evento evento[], int max);
 void eventos_hoje(Evento evento[], int max);
 void proximos_eventos(Evento evento[], int count);
 Evento* remover_evento(Evento evento[], int max);
-Evento* troca(Evento evento[], int cod, int max);
+//Evento* troca_rm(Evento evento[], int cod, int max);
+Evento* troca(Evento evento[], int a, int b);
+void ordena_eventos(Evento evento[], int cod);
 
 int main(void){
     int count=0, retorno, opcao;
@@ -38,12 +40,14 @@ int main(void){
     }
     while(!feof(arq)){
         retorno = fread(&evento[count], sizeof(Evento), 1, arq);
-        printf("%i\n",retorno);
+        //printf("%i\n",retorno);
         if(retorno == 1){
             count++;
             evento = realloc(evento, (count+1)*sizeof(Evento));
         }
     }
+
+    ordena_eventos(evento, count);
 
     do {
 		printf("Escolha uma opção:\n");
@@ -207,7 +211,7 @@ Evento* remover_evento(Evento evento[], int max){
         if (evento->data.dia == dia && evento->data.mes == mes &&
                 evento->data.ano == ano && evento->inicio.hora == hora &&
                 evento->inicio.minuto == minuto){
-            return troca(evento, i, max);
+            return troca(evento, i, max-1);
         }
         else{
             printf("Evento não encontrado!\n");
@@ -216,11 +220,31 @@ Evento* remover_evento(Evento evento[], int max){
     }
 }
 
-Evento* troca(Evento evento[], int cod, int max){
+Evento* troca(Evento evento[], int a, int b){
     Evento temp;
-    temp = evento[cod];
-    evento[cod] = evento[max-1];
-    evento[max-1] = temp;
+    temp = evento[a];
+    evento[a] = evento[b];
+    evento[b] = temp;
     return evento;
+}
+
+void ordena_eventos(Evento evento[], int cod){
+    for(int i=0;i<cod;i++){
+        for(int j=0;j<cod;j++){
+            if(evento[j].data.ano > evento[j+1].data.ano){
+                troca(evento,j, j+1);
+            }
+            else if(evento[j].data.ano == evento[j+1].data.ano && evento[j].data.mes > evento[j+1].data.mes){
+                troca(evento, j, j+1);
+            }
+            else if(evento[j].data.ano == evento[j+1].data.ano && evento[j].data.mes == evento[j+1].data.mes && evento[j].data.dia > evento[j+1].data.dia){
+                troca(evento,j, j+1);
+            }
+            else if(evento[j].data.ano == evento[j+1].data.ano && evento[j].data.mes == evento[j+1].data.mes && evento[j].data.dia == evento[j+1].data.dia && evento[j].inicio.hora > evento[j+1].inicio.hora){
+                troca(evento,j, j+1);
+            }
+        }
+    }
+    return;
 }
 
