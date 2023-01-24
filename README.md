@@ -1,1 +1,2 @@
-#### Esse repositório serve como minha nuvem, ainda de quebra, encho meu github de commits
+# Estudos
+#### Coleção que códigos que julgo relevantes, mas não a ponto de ter um repositório próprio
