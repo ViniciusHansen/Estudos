@@ -1,0 +1,12 @@
+--EXE - Produto,Junções e Operações entre Conjuntos
+
+--select medicos.nome,medicos.cpf from medicos,pacientes where codm = codp
+--select ambulatorios.nroa, ambulatorios.andar from ambulatorios,medicos where medicos.nroa = ambulatorios.nroa and especialidade = 'ortopedia'
+--select medicos.nome,medicos.idade from medicos,consultas,pacientes where consultas.codp = pacientes.codp and pacientes.nome = 'Ana'
+--select medicos.codm,medicos.nome from medicos,ambulatorios a1, ambulatorios a2,consultas where (a1.nroa = medicos.nroa and medicos.nome='Pedro') and a1.nroa = a2.nroa and a2.nroa = medicos.nroa and medicos.codm = consultas.codm and consultas.data = date('2006-06-14')
+--select pacientes.cpf,pacientes.idade from pacientes,consultas,medicos where consultas.codm = medicos.codm and medicos.especialidade='ortopedia' and consultas.data < day('16')
+--select ambulatorios.*,medicos.codm,medicos.nome from ambulatorios left join medicos on ambulatorios.nroa = medicos.nroa
+--select m1.cpf,m1.nome ,pacientes.cpf,pacientes.nome,consultas.data from medicos m1,medicos m2,consultas,pacientes where m2.codm = consultas.codm and pacientes.codp = consultas.codp
+--select medicos.nome,medicos.cpf from medicos union select pacientes.nome,pacientes.cpf from pacientes
+--select pacientes.codp,pacientes.nome from pacientes except select pacientes.codp,pacientes.nome from pacientes,consultas,medicos where pacientes.codp = consultas.codp and consultas.codm = medicos.codm and medicos.nome = 'Pedro'
+--select nome, cpf from funcionarios except select f1.nome, f1.cpf FROM funcionarios f1,funcionarios f2 where f1.salario<f2.salario
