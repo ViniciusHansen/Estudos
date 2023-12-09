@@ -1,0 +1,30 @@
+2-
+
+S1: r1(X); r1(Z); w1(X); w1(Z); r3(X); r2(Z); r3(Y); w3(Y); r4(Y); w4(Y); r2(Y); w2(Z); r4(Z); w2(Y); w4(Z);
+
+
+conflitos: T3 -> T4 em w3(Y) .. r4(Y)
+	   T4 -> T2 em w4(Y) .. r2(Y)
+	   T2 -> T4 em w2(Z) .. r4(Z)
+	   
+T2 <-> T4 <- T3
+
+
+
+
+S2: r1(X); r2(Z); r3(X); r4(Y); r1(Z); r2(Y); r3(Y); w1(Z); w1(X); w4(Y); w2(Z); r4(Z); w3(Y); w2(Y); w4(Z);
+
+conflitos: T2 -> T3 em r2(Z) .. w1(Z)
+	   T3 -> T1 em r3(X) .. w1(X)
+	   T2 -> T4 em r2(Y) .. w4(Y)
+	   T3 -> T4 em r3(Y) .. w4(Y)
+	   T1 -> T2 em w1(Z) .. w2(Z)
+	   T4 -> T3 em w4(Y) .. w3(Y)
+	   T2 -> T4 em w2(Z) .. r4(Z)
+	   T3 -> T4 em w3(Y) .. w2(Y)
+	   
+T1  -> T2 -> T4
+   ^   |     ^
+    \  V   /
+     \    V
+       T3

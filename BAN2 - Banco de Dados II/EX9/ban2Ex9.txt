@@ -1,0 +1,20 @@
+Q1)
+1. Atualização perdida
+2. Atualização Temporária
+3. Sumário Incorreto
+
+Q2) -----
+
+Q3) --------------------| Leitura Suja	| Leitura não Repetível | Fantasmas 
+    Read Uncommited	|	Sim	|	Sim		| Sim
+    Read Commited	|	Não	|	Sim		| Sim
+    Repeatable read	|	Não	|	Não		| Sim
+    Serializable	|	Não	|	Não		| Não
+    
+    
+    
+Q4) D
+
+Q5) A
+
+Q6) A

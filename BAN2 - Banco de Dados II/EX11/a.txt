@@ -1,0 +1,118 @@
+1)
+grafo não tem ciclo, portanto é serializável em conflito.
+Uma execução serial equivalente seria:
+t1 -> t2 -> t3 -> t4 -> t5
+ou
+t1 -> t2 -> t4 -> t3 -> t5
+
+2)
+
+t1      |   t2
+------------------
+r(x)    |
+w(x)    |
+        |   r(x)
+        |   w(x)
+r(y)    |
+w(y)    |
+
+Apenas essa é serializável
+
+ou
+
+t1      |   t2
+------------------
+r(x)    |
+        |   r(x)
+        |   w(x)
+w(y)    |
+w(x)    |
+r(y)    |
+
+ou
+
+t1      |   t2
+------------------
+        |   r(x)
+r(x)    |
+w(x)    |
+        |   w(x)
+r(y)    |
+w(y)    |
+
+ou
+
+
+t1      |   t2
+------------------
+r(x)    |
+        |   r(x)
+w(x)    |
+        |   w(x)
+r(y)    |
+w(y)    |
+
+ou
+
+
+t1      |   t2
+------------------
+        |   r(x)
+r(x)    |
+        |   w(x)
+w(x)    |
+r(y)    |
+w(y)    |
+
+ou
+
+
+t1      |   t2
+------------------
+r(x)    |
+        |   r(x)
+w(x)    |
+r(y)    |
+w(y)    |
+        |   w(x)
+
+
+3)
+vamos fazer os grafos de precedência.
+    1.
+        (t1)  ->  (t2)
+          ^      /
+           \    /
+            V  V
+            (t3)
+        Esse escalonamento não seria serializável em conflito.
+    2.
+        (t1) -> (t2)
+          ^      ^
+           \    /
+            V  /
+           (t3)
+        Não é serializável em conflito.
+
+    3.
+        (t1) <-- (t2)
+           ^      /
+            \    V
+             (t3)
+        É serializável em conflito.
+        plano serial equivalente:
+            t2 -> t3 -> t1
+
+    4.
+        fazer
+
+4)
+    fazer
+
+5)
+
+    S1. é serializável em visão pois os pares e a precedência wN(X) e rM(X) se mantém, N e M sendo iguais em Sh e S1 (isso vale para wN(Y) e rM(Y) também)
+
+
+
+

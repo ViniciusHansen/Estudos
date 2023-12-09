@@ -1,0 +1,23 @@
+--1 - Recupere todos os departamentos ordenados por gerdatainicio
+db.departamento.find().sort({gerdatainicio: 1});
+
+
+--2 - Recupere os projetos do departamento "Pesquisa"
+db.projeto.find({dnum: db.departamento.findOne({dnome: "Pesquisa"}).dnumero})
+
+
+--3 - Recupere o nome e a idade atual dos funcionários
+db.empregado.aggregate([{$project: {nome: "$pnome", idade: {$dateDiff: {startDate: "$datanasc", endDate: new Date(), unit: "year"}}}}])
+
+
+--4 - Recupere o salário médio dos funcionários
+db.empregado.aggregate([{$group: {"_id": null, "salarioMedio": {$avg: "$salario"}}}])
+
+
+--5 - Inclua os dependentes como agregados dos seus respectivos empregados.
+db.empregado.aggregate([{$lookup: {from: "dependente", localField: "ssn", foreignField: "essn", as: "dependentes"}}])
+
+
+
+
+
