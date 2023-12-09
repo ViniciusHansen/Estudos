@@ -1,0 +1,23 @@
+<script>
+    var nome = prompt("Por favor, insira seu nome");
+
+    var data = new Date();
+    var horas = data.getHours();
+    var saudacao;
+
+    if (horas < 12) {
+        saudacao = "Bom dia";
+    } else if (horas < 18) {
+        saudacao = "Boa tarde";
+    } else {
+        saudacao = "Boa noite";
+    }
+
+    var diasSemana = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+    var diaSemana = diasSemana[data.getDay()];
+    var dia = data.getDate();
+    var mes = data.getMonth() + 1;
+    var ano = data.getFullYear();
+
+    alert(`${saudacao}, ${nome}, hoje é ${diaSemana}, ${dia}/${mes}/${ano}.`);
+</script>

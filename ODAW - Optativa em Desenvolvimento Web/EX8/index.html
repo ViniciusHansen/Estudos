@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Planejador Financeiro</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <header>Bem-vindo ao Planejador Financeiro</header>
+    <main>
+        <article>
+            <h1 id="main-title" style="text-align: center;">Planejador Financeiro</h1>
+
+            <div id="stonks" style="position: relative; width: 20%; padding-top: 20%; overflow: hidden;">
+                <div id="stonks-inner" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0;">
+                    <img alt="stonks" src="stonks.webp"
+                        style="max-width: 70%; max-height: 70%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" />
+                </div>
+            </div>
+
+
+            <h2 id="features-title" style="text-align: center;">Funcionalidades do Planejador Financeiro</h2>
+            <!-- <ul id="features-list" style="text-align: left; margin: 0 auto; display: inline-block;"> -->
+            <ul id="features-list" style="text-align: left; margin: 0 auto; width: 50%;">
+                <li><strong>Entrada de Dados</strong>: Permite ao usuário inserir informações financeiras, como receitas
+                    e despesas, através de um formulário.</li>
+                <li><strong>Visualização de Dados</strong>: Após a inserção, os dados são exibidos em tabelas para fácil
+                    visualização e comparação.</li>
+                <li><strong>Categorização</strong>: O usuário pode categorizar suas despesas (por exemplo, alimentação,
+                    transporte, lazer) para melhor análise.</li>
+                <li><strong>Totalização</strong>: O planejador irá calcular e mostrar o total de receitas e despesas
+                    para dar uma visão geral da situação financeira.</li>
+                <li><strong>Filtros e Buscas</strong>: Permite ao usuário filtrar e buscar por entradas específicas,
+                    facilitando a análise de dados.</li>
+                <li><strong>Gráficos e Relatórios</strong>: Fornece uma representação visual dos dados, ajudando o
+                    usuário a entender sua situação financeira de forma mais clara.</li>
+                <li><strong>Mobilidade</strong>: Acessível de qualquer dispositivo, seja computador, tablet ou
+                    smartphone.</li>
+            </ul>
+            <br>
+            <h3 id="data-title" style="text-align: center;">Entrada de Dados</h3>
+            <form id="financeForm">
+                <label for="type">Tipo:</label>
+                <select id="type" name="type">
+                    <option value="receita">Receita</option>
+                    <option value="despesa">Despesa</option>
+                </select><br /><br />
+                <label for="date">Data:</label><input id="date" name="dateEntry" type="date" />
+                <label for="category">Categoria:</label>
+                <input id="category" name="category" placeholder="Ex: Alimentação" type="text" /><br /><br />
+                <label for="value">Valor:</label>
+                <input id="value" name="value" placeholder="Ex: 100.50" type="number" /><br /><br />
+                <input type="submit" value="Adicionar" />
+            </form>
+            <h3>Dados Inputados</h3>
+            <h4>Receitas</h4>
+            <table border="1" id="incomeTable">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <th>31/09/2023</th>
+                        <th>Bolsa</th>
+                        <th>R$ 700,00</th>
+                    </tr> -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Total</td>
+                        <th id="incomeTotal">R$ 0,00</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <h4>Despesas</h4>
+            <table border="1" id="expenseTable">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <th>18/09/2023</th>
+                        <th>Transporte</th>
+                        <th>R$ 230,00</th>
+                    </tr> -->
+                    <!-- Dados de despesas serão inseridos aqui -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Total</td>
+                        <th id="expenseTotal">R$ 0,00</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </article>
+    </main>
+    <footer>© 2023 Planejador Financeiro</footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

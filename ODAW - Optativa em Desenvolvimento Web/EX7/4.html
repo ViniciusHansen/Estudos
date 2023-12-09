@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo de Tabela com Input de Dados</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="dataForm">
+        Nome: <input type="text" id="nome" required><br>
+        Idade: <input type="number" id="idade" required><br>
+        Cidade: <input type="text" id="cidade" required><br>
+        <button type="button" onclick="adicionarDados()">Adicionar</button>
+    </form>
+
+    <table id="dataTable">
+        <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Cidade</th>
+        </tr>
+    </table>
+
+    <script>
+        function adicionarDados() {
+            var nome = document.getElementById('nome').value;
+            var idade = document.getElementById('idade').value;
+            var cidade = document.getElementById('cidade').value;
+
+            var table = document.getElementById('dataTable');
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+
+            cell1.innerHTML = nome;
+            cell2.innerHTML = idade;
+            cell3.innerHTML = cidade;
+
+            // Limpar os campos do formulário após adicionar os dados à tabela
+            document.getElementById('nome').value = '';
+            document.getElementById('idade').value = '';
+            document.getElementById('cidade').value = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exemplo 1</title>
+</head>
+<body>
+    <form id="form1">
+        <input type="text" id="campo1" placeholder="Campo 1" /><br>
+        <input type="text" id="campo2" placeholder="Campo 2" /><br>
+        <input type="text" id="campo3" placeholder="Campo 3" /><br>
+        <input type="checkbox" id="checkbox" onclick="alterarCaso()" /> Alterar para maiúsculas/minúsculas
+    </form>
+
+    <script>
+        function alterarCaso() {
+            var checkbox = document.getElementById('checkbox');
+            var campo1 = document.getElementById('campo1');
+            var campo2 = document.getElementById('campo2');
+            var campo3 = document.getElementById('campo3');
+
+            if (checkbox.checked) {
+                campo1.value = campo1.value.toUpperCase();
+                campo2.value = campo2.value.toUpperCase();
+                campo3.value = campo3.value.toUpperCase();
+            } else {
+                campo1.value = campo1.value.toLowerCase();
+                campo2.value = campo2.value.toLowerCase();
+                campo3.value = campo3.value.toLowerCase();
+            }
+        }
+    </script>
+</body>
+</html>

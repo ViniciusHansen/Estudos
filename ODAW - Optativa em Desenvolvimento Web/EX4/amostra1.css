@@ -1,0 +1,32 @@
+/* Modificações Simples */
+h1, h2, h3 {
+    color: black; /* Example color, can be changed */
+    background-color: grey; /* Example color, can be changed */
+}
+
+p {
+    font-size: 12pt;
+}
+
+.first, .last {
+    border-width: thin;
+    border-style: solid;
+    border-color: black; /* Example color, can be changed */
+}
+
+h1 {
+    border-style: solid;
+}
+
+/* Acrescentar Novas Classes */
+.highlight {
+    background-color: #FFFF00;
+}
+
+.ufo {
+    font-family: monospace;
+    font-size: large;
+    color: #00FF00;
+    background-color: #000000;
+}
+

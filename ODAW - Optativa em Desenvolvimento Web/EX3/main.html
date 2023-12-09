@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Planejador Financeiro</title>
+</head>
+
+<body>
+    <header>Bem-vindo ao Planejador Financeiro</header>
+    <main>
+        <article>
+            <h1>Planejador Financeiro</h1>
+            <div id="stonks" style="height: auto; width: 20%;">
+                <img alt="stonks" src="stonks.webp" style="max-width: 100%; max-height: 100%;" />
+            </div>
+            <h2>Funcionalidades do Planejador Financeiro</h2>
+            <ul>
+                <li><strong>Entrada de Dados</strong>: Permite ao usuário inserir informações financeiras, como receitas
+                    e despesas, através de um formulário.</li>
+                <li><strong>Visualização de Dados</strong>: Após a inserção, os dados são exibidos em tabelas para fácil
+                    visualização e comparação.</li>
+                <li><strong>Categorização</strong>: O usuário pode categorizar suas despesas (por exemplo, alimentação,
+                    transporte, lazer) para melhor análise.</li>
+                <li><strong>Totalização</strong>: O planejador irá calcular e mostrar o total de receitas e despesas
+                    para dar uma visão geral da situação financeira.</li>
+                <li><strong>Filtros e Buscas</strong>: Permite ao usuário filtrar e buscar por entradas específicas,
+                    facilitando a análise de dados.</li>
+                <li><strong>Gráficos e Relatórios</strong>: Fornece uma representação visual dos dados, ajudando o
+                    usuário a entender sua situação financeira de forma mais clara.</li>
+                <li><strong>Mobilidade</strong>: Acessível de qualquer dispositivo, seja computador, tablet ou
+                    smartphone.</li>
+            </ul>
+            <!-- Formulário para input de dados -->
+            <h3>Entrada de Dados</h3>
+            <form id="financeForm">
+                <label for="type">Tipo:</label>
+                <select id="type" name="type">
+                    <option value="receita">Receita</option>
+                    <option value="despesa">Despesa</option>
+                </select><br /><br /><label for="date">Data:</label><input id="date" name="dateEntry" type="date" />
+                <label for="category">Categoria:</label>
+                <input id="category" name="category" placeholder="Ex: Alimentação" type="text" /><br /><br />
+                <label for="value">Valor:</label>
+                <input id="value" name="value" placeholder="Ex: 100.50" type="number" /><br /><br />
+                <input type="submit" value="Adicionar" />
+            </form>
+            <!-- Tabelas para visualização dos dados -->
+            <h3>Dados Inputados</h3>
+            <h4>Receitas</h4>
+            <table border="1" id="incomeTable">
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Bolsa</th>
+                        <th>700</th>
+                    </tr>
+                    <!-- Dados de receitas serão inseridos aqui -->
+                </tbody>
+            </table>
+            <h4>Despesas</h4>
+            <table border="1" id="expenseTable">
+                <thead>
+                    <tr>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>transporte</th>
+                        <th>230</th>
+                    </tr>
+                    <!-- Dados de despesas serão inseridos aqui -->
+                </tbody>
+            </table>
+        </article>
+    </main>
+    <footer>© 2023 Planejador Financeiro</footer>
+</body>
+
+</html>
