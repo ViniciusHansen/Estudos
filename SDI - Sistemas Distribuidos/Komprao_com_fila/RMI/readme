@@ -1,0 +1,5 @@
+javac IEstoque.java ServerEstoque.java IServidor.java ServerServidor.java ServidorRMI.java
+
+depois executar:
+
+java ServidorRMI
